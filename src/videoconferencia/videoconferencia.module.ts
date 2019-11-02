@@ -1,9 +1,12 @@
 import { Module } from '@nestjs/common';
-import { VideoconferenciaService } from './videoconferencia.service';
-import { VideoconferenciaController } from './videoconferencia.controller';
+import { VideoConferenciaService } from './videoconferencia.service';
+import { VideoConferenciaController } from './videoconferencia.controller';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { VideoConferenciaEntity } from './videoConferencia.entity';
 
 @Module({
-  providers: [VideoconferenciaService],
-  controllers: [VideoconferenciaController]
+  imports: [TypeOrmModule.forFeature([VideoConferenciaEntity])],
+  providers: [VideoConferenciaService],
+  controllers: [VideoConferenciaController]
 })
 export class VideoconferenciaModule {}
