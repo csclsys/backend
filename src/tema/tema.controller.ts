@@ -2,29 +2,25 @@ import {
     Controller,
     Get,
     Post,
-    UsePipes,
-    Body,
-    Query,
-    Param,
-    UseGuards,
+    Body
 } from '@nestjs/common';
 
 import { TemaService } from './tema.service';
 import { TemaDTO } from './tema.dto';
 import { ApiUseTags } from '@nestjs/swagger';
 
-@ApiUseTags('Tema')
-@Controller('temas')
+@ApiUseTags( 'Tema' )
+@Controller( 'temas' )
 export class TemaController {
-    constructor(private temaService: TemaService) { }
+    constructor( private temaService: TemaService ) { }
 
     @Get()
-    showAllTemas() {
+    showAllTemas () {
         return this.temaService.showAll();
     }
 
     @Post()
-    cadastrarTema(@Body() temaData: TemaDTO) {
-        return this.temaService.cadastrar(temaData);
+    cadastrarTema ( @Body() temaData: TemaDTO ) {
+        return this.temaService.cadastrar( temaData );
     }
 }

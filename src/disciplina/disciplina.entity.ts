@@ -5,13 +5,13 @@ import {
   CreateDateColumn,
 } from 'typeorm';
 
-@Entity('disciplina')
+@Entity( 'disciplina' )
 export class DisciplinaEntity {
-  @PrimaryGeneratedColumn('increment')
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-  @Column({
+  @Column( {
     type: 'text',
-  })
+  } )
   nome: string;
 }

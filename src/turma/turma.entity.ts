@@ -4,37 +4,37 @@ import {
   Column,
   CreateDateColumn,
   ManyToMany,
-  JoinColumn,
+  JoinColumn
 } from 'typeorm';
-import { UsuarioEntity } from 'src/usuario/usuario.entity';
+import { UsuarioEntity } from '../usuario/usuario.entity';
 
-@Entity('turma')
+@Entity( 'turma' )
 export class TurmaEntity {
 
-  @ManyToMany(type => UsuarioEntity)
+  @ManyToMany( type => UsuarioEntity )
   @JoinColumn( { name: 'usuario_id' } )
   role?: UsuarioEntity;
 
-  @PrimaryGeneratedColumn('increment')
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
   @CreateDateColumn()
   created: Date;
 
-  @Column({
+  @Column( {
     type: 'text',
-  })
+  } )
   nome: string;
 
-  @Column({
+  @Column( {
     type: 'text',
-  })
+  } )
   semestre: string;
 
-  @Column({
+  @Column( {
     type: 'text',
     unique: true,
-  })
+  } )
   ano: string;
 
 }

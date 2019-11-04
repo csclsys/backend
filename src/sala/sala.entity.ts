@@ -1,33 +1,32 @@
 import {
     Entity,
     PrimaryGeneratedColumn,
-    Column,
-    CreateDateColumn,
+    Column
 } from 'typeorm';
 
-@Entity('sala')
+@Entity( 'sala' )
 export class SalaEntity {
-    @PrimaryGeneratedColumn('increment')
-    id: string;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-    @Column({
+    @Column( {
         type: 'text',
-    })
+    } )
     descrPergunta: string;
 
-    @Column({
+    @Column( {
         type: 'text',
-    })
+    } )
     tipo: string;
 
-    @Column({
+    @Column( {
         type: 'timestamp',
-    })
+    } )
     dataAbertura: Date;
 
-    @Column({
+    @Column( {
         type: 'timestamp',
         nullable: true,
-    })
+    } )
     dataFechamento: Date;
 }

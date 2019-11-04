@@ -5,18 +5,18 @@ import {
     CreateDateColumn,
 } from 'typeorm';
 
-@Entity('respostaSala')
+@Entity( 'respostaSala' )
 export class RespostaSalaEntity {
-    @PrimaryGeneratedColumn('increment')
-    id: string;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-    @Column({
+    @Column( {
         type: 'timestamp',
-    })
+    } )
     horarioResposta: Date;
 
-    @Column({
+    @Column( {
         type: 'text',
-    })
+    } )
     texto: string;
 }

@@ -1,8 +1,5 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { UsuarioModule } from './usuario/usuario.module';
 import { TurmaModule } from './turma/turma.module';
 import { DisciplinaModule } from './disciplina/disciplina.module';
@@ -12,7 +9,8 @@ import { VideoconferenciaModule } from './videoconferencia/videoconferencia.modu
 import { SalaModule } from './sala/sala.module';
 import { RespostasalaModule } from './respostasala/respostasala.module';
 
-@Module({
+
+@Module( {
   imports: [
     TypeOrmModule.forRoot(),
     UsuarioModule,
@@ -24,7 +22,7 @@ import { RespostasalaModule } from './respostasala/respostasala.module';
     SalaModule,
     RespostasalaModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
-})
-export class AppModule {}
+  controllers: [],
+  providers: [],
+} )
+export class AppModule { }

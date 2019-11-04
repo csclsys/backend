@@ -2,29 +2,25 @@ import {
     Controller,
     Get,
     Post,
-    UsePipes,
-    Body,
-    Query,
-    Param,
-    UseGuards,
+    Body
 } from '@nestjs/common';
 
-import { VideoConferenciaService } from './videoConferencia.service';
-import { VideoConferenciaDTO } from './videoConferencia.dto';
 import { ApiUseTags } from '@nestjs/swagger';
+import { VideoConferenciaService } from './videoconferencia.service';
+import { VideoConferenciaDTO } from './videoconferencia.dto';
 
-@ApiUseTags('VideoConferencia')
-@Controller('videoConferencias')
+@ApiUseTags( 'VideoConferencia' )
+@Controller( 'videoConferencias' )
 export class VideoConferenciaController {
-    constructor(private videoConferenciaService: VideoConferenciaService) { }
+    constructor( private videoConferenciaService: VideoConferenciaService ) { }
 
     @Get()
-    showAllVideoConferencias() {
+    showAllVideoConferencias () {
         return this.videoConferenciaService.showAll();
     }
 
     @Post()
-    cadastrarVideoConferencia(@Body() videoConferenciaData: VideoConferenciaDTO) {
-        return this.videoConferenciaService.cadastrar(videoConferenciaData);
+    cadastrarVideoConferencia ( @Body() videoConferenciaData: VideoConferenciaDTO ) {
+        return this.videoConferenciaService.cadastrar( videoConferenciaData );
     }
 }

@@ -1,23 +1,22 @@
 import {
     Entity,
     PrimaryGeneratedColumn,
-    Column,
-    CreateDateColumn,
+    Column
 } from 'typeorm';
 
-@Entity('videoConferencia')
+@Entity( 'videoConferencia' )
 export class VideoConferenciaEntity {
-    @PrimaryGeneratedColumn('increment')
-    id: string;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-    @Column({
+    @Column( {
         type: 'timestamp',
-    })
+    } )
     horaInicio: Date;
 
-    @Column({
+    @Column( {
         type: 'timestamp',
         nullable: true,
-    })
+    } )
     horaFim: Date;
 }

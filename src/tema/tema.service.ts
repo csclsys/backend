@@ -4,32 +4,31 @@ import { Repository } from 'typeorm';
 
 import { TemaEntity } from './tema.entity';
 import { TemaDTO } from './tema.dto';
-import { thisTypeAnnotation } from '@babel/types';
 
 @Injectable()
 export class TemaService {
     constructor(
-        @InjectRepository(TemaEntity)
+        @InjectRepository( TemaEntity )
         private temaRepository: Repository<TemaEntity>,
     ) { }
 
-    async showAll() {
-        const temas = await this.temaRepository.find({});
+    async showAll () {
+        const temas = await this.temaRepository.find( {} );
         // @ts-ignore
-        return temas.map(tema => tema);
+        return temas.map( tema => tema );
     }
 
-    async cadastrar(data: TemaDTO) {
+    async cadastrar ( data: TemaDTO ) {
         const { nome } = data;
-        let tema = await this.temaRepository.findOne({
+        let tema = await this.temaRepository.findOne( {
             where: { nome },
-        });
+        } );
 
-        if (tema) {
-            throw new HttpException('Tema já existe', HttpStatus.BAD_REQUEST);
+        if ( tema ) {
+            throw new HttpException( 'Tema já existe', HttpStatus.BAD_REQUEST );
         }
-        tema = await this.temaRepository.create(data);
-        await this.temaRepository.save(tema);
+        tema = await this.temaRepository.create( data );
+        await this.temaRepository.save( tema );
         // @ts-ignore
         return tema;
     }

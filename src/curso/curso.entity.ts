@@ -1,17 +1,12 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  CreateDateColumn,
-} from 'typeorm';
+import { Column, PrimaryGeneratedColumn, Entity } from "typeorm";
 
-@Entity('curso')
+@Entity( { name: 'curso' } )
 export class CursoEntity {
-  @PrimaryGeneratedColumn('increment')
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-  @Column({
+  @Column( {
     type: 'text',
-  })
+  } )
   nome: string;
 }

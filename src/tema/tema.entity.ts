@@ -1,28 +1,27 @@
 import {
     Entity,
     PrimaryGeneratedColumn,
-    Column,
-    CreateDateColumn,
+    Column
 } from 'typeorm';
 
-@Entity('tema')
+@Entity( 'tema' )
 export class TemaEntity {
-    @PrimaryGeneratedColumn('increment')
-    id: string;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-    @Column({
+    @Column( {
         type: 'text',
-    })
+    } )
     nome: string;
 
-    @Column({
+    @Column( {
         type: 'text',
-    })
+    } )
     situacao: string;
 
-    @Column({
+    @Column( {
         type: 'timestamp',
-    })
+    } )
     dataInclusao: Date;
 
 }

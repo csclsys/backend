@@ -2,29 +2,25 @@ import {
     Controller,
     Get,
     Post,
-    UsePipes,
-    Body,
-    Query,
-    Param,
-    UseGuards,
+    Body
 } from '@nestjs/common';
 
 import { SalaService } from './sala.service';
 import { SalaDTO } from './sala.dto';
 import { ApiUseTags } from '@nestjs/swagger';
 
-@ApiUseTags('Sala')
-@Controller('salas')
+@ApiUseTags( 'Sala' )
+@Controller( 'salas' )
 export class SalaController {
-    constructor(private salaService: SalaService) { }
+    constructor( private salaService: SalaService ) { }
 
     @Get()
-    showAllSalas() {
+    showAllSalas () {
         return this.salaService.showAll();
     }
 
     @Post()
-    cadastrarSala(@Body() salaData: SalaDTO) {
-        return this.salaService.cadastrar(salaData);
+    cadastrarSala ( @Body() salaData: SalaDTO ) {
+        return this.salaService.cadastrar( salaData );
     }
 }

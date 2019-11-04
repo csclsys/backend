@@ -5,38 +5,38 @@ import {
   CreateDateColumn,
 } from 'typeorm';
 
-@Entity('usuario')
+@Entity( 'usuario' )
 export class UsuarioEntity {
-  @PrimaryGeneratedColumn('increment')
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
   @CreateDateColumn()
   created: Date;
 
-  @Column({
+  @Column( {
     type: 'text',
-  })
+  } )
   nome: string;
 
-  @Column({
+  @Column( {
     type: 'text',
-  })
+  } )
   sobrenome: string;
 
-  @Column({
+  @Column( {
     type: 'text',
     unique: true,
-  })
+  } )
   cpf: string;
 
-  @Column({
+  @Column( {
     type: 'text',
     unique: true,
-  })
+  } )
   matricula: string;
 
-  @Column({
+  @Column( {
     type: 'text',
-  })
+  } )
   papel: string;
 }

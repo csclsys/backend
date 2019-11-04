@@ -2,29 +2,25 @@ import {
     Controller,
     Get,
     Post,
-    UsePipes,
-    Body,
-    Query,
-    Param,
-    UseGuards,
+    Body
 } from '@nestjs/common';
 
-import { RespostaSalaService } from './respostaSala.service';
-import { RespostaSalaDTO } from './respostaSala.dto';
 import { ApiUseTags } from '@nestjs/swagger';
+import { RespostaSalaService } from './respostasala.service';
+import { RespostaSalaDTO } from './respostasala.dto';
 
-@ApiUseTags('RespostaSala')
-@Controller('respostaSalas')
+@ApiUseTags( 'RespostaSala' )
+@Controller( 'respostaSalas' )
 export class RespostaSalaController {
-    constructor(private respostaSalaService: RespostaSalaService) { }
+    constructor( private respostaSalaService: RespostaSalaService ) { }
 
     @Get()
-    showAllRespostaSalas() {
+    showAllRespostaSalas () {
         return this.respostaSalaService.showAll();
     }
 
     @Post()
-    cadastrarRespostaSala(@Body() respostaSalaData: RespostaSalaDTO) {
-        return this.respostaSalaService.cadastrar(respostaSalaData);
+    cadastrarRespostaSala ( @Body() respostaSalaData: RespostaSalaDTO ) {
+        return this.respostaSalaService.cadastrar( respostaSalaData );
     }
 }
