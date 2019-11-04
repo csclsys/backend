@@ -4,7 +4,8 @@ import {
   Column,
   CreateDateColumn,
   ManyToMany,
-  JoinColumn
+  JoinTable,
+  ManyToOne
 } from 'typeorm';
 import { UsuarioEntity } from '../usuario/usuario.entity';
 
@@ -12,8 +13,15 @@ import { UsuarioEntity } from '../usuario/usuario.entity';
 export class TurmaEntity {
 
   @ManyToMany( type => UsuarioEntity )
-  @JoinColumn( { name: 'usuario_id' } )
-  role?: UsuarioEntity;
+  @JoinTable( { name: 'turma_usuario_monitor' } )
+  monitores: UsuarioEntity[];
+
+  @ManyToMany( type => UsuarioEntity )
+  @JoinTable( { name: 'turma_usuario_alunos' } )
+  alunos: UsuarioEntity[];
+
+  @ManyToOne( type => UsuarioEntity )
+  professor: UsuarioEntity;
 
   @PrimaryGeneratedColumn()
   id: number;

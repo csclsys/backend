@@ -3,12 +3,25 @@ import {
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
+  ManyToMany,
+  ManyToOne,
+  OneToMany,
 } from 'typeorm';
+import { TurmaEntity } from 'src/turma/turma.entity';
 
 @Entity( 'usuario' )
 export class UsuarioEntity {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @ManyToMany( type => TurmaEntity )
+  turmasMonitor: TurmaEntity[];
+
+  @ManyToMany( type => TurmaEntity )
+  turmasAluno: TurmaEntity[];
+
+  @OneToMany( type => TurmaEntity, turma => turma.professor )
+  turmasProfessor: UsuarioEntity[];
 
   @CreateDateColumn()
   created: Date;
