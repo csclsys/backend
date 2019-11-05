@@ -1,13 +1,18 @@
 import {
     Entity,
     PrimaryGeneratedColumn,
-    Column
+    Column,
+    ManyToOne
 } from 'typeorm';
+import { TemaEntity } from 'src/tema/tema.entity';
 
 @Entity( 'videoConferencia' )
 export class VideoConferenciaEntity {
     @PrimaryGeneratedColumn()
     id: number;
+
+    @ManyToOne(type => TemaEntity)
+    tema: TemaEntity;
 
     @Column( {
         type: 'timestamp',

@@ -6,6 +6,7 @@ import {
     OneToMany,
     ManyToOne,
 } from 'typeorm';
+import { SalaEntity } from 'src/sala/sala.entity';
 
 @Entity( 'respostaSala' )
 export class RespostaSalaEntity {
@@ -17,6 +18,9 @@ export class RespostaSalaEntity {
 
     @ManyToOne( type => RespostaSalaEntity )
     comentario: RespostaSalaEntity;
+
+    @ManyToOne(type => SalaEntity)
+    sala: SalaEntity;
 
     @Column( {
         type: 'timestamp',

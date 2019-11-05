@@ -8,6 +8,8 @@ import {
   OneToMany,
 } from 'typeorm';
 import { TurmaEntity } from 'src/turma/turma.entity';
+import { TemaEntity } from 'src/tema/tema.entity';
+import { SalaEntity } from 'src/sala/sala.entity';
 
 @Entity( 'usuario' )
 export class UsuarioEntity {
@@ -22,6 +24,15 @@ export class UsuarioEntity {
 
   @OneToMany( type => TurmaEntity, turma => turma.professor )
   turmasProfessor: UsuarioEntity[];
+
+  @OneToMany( type => TemaEntity, tema => tema.proponente )
+  temasProponente: UsuarioEntity[];
+
+  @OneToMany( type => TemaEntity, tema => tema.aprovador )
+  temasAprovador: UsuarioEntity[];
+
+  @OneToMany( type => SalaEntity, sala => sala.usuario )
+  salas: SalaEntity[];
 
   @CreateDateColumn()
   created: Date;
