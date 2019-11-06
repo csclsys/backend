@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, HttpModule } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsuarioModule } from './usuario/usuario.module';
 import { TurmaModule } from './turma/turma.module';
@@ -21,6 +21,7 @@ import { RespostasalaModule } from './respostasala/respostasala.module';
     VideoconferenciaModule,
     SalaModule,
     RespostasalaModule,
+    HttpModule,
   ],
   controllers: [],
   providers: [],

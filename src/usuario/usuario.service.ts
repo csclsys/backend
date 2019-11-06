@@ -19,6 +19,12 @@ export class UsuarioService {
     return usuarios.map(usuario => usuario);
   }
 
+  async showOne(id: number) {
+    const usuario = await this.usuarioRepository.findOne({where: {id}});
+    // @ts-ignore
+    return usuario;
+  }
+
   async cadastrar(data: UsuarioDTO) {
     const { cpf } = data;
     let usuario = await this.usuarioRepository.findOne({ where: { cpf } });

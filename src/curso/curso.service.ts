@@ -5,6 +5,8 @@ import { Repository } from 'typeorm';
 import { CursoEntity } from './curso.entity';
 import { CursoDTO } from './curso.dto';
 
+import Axios from 'axios';
+
 @Injectable()
 export class CursoService {
   constructor(
@@ -30,5 +32,24 @@ export class CursoService {
     await this.cursoRepository.save(curso);
     // @ts-ignore
     return curso;
+  }
+
+  async importarCursos() {
+    let cursos: any = [];
+
+    await Axios.get(
+      'https://my-json-server.typicode.com/csclsys/db-repository/cursos',
+    ).then(res => {
+      cursos = res.data;
+    });
+
+    for (let item of cursos) {
+      const temp = await this.cursoRepository.create(item);
+      await this.cursoRepository.save(temp);
+
+      console.log(temp);
+    }
+
+    return cursos;
   }
 }

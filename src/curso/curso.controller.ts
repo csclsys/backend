@@ -23,4 +23,9 @@ export class CursoController {
   cadastrarCurso ( @Body() cursoData: CursoDTO ) {
     return this.cursoService.cadastrar( cursoData );
   }
+
+  @Post('importarCursos')
+  importarCursos() {
+    return this.cursoService.importarCursos();
+  }
 }
