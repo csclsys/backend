@@ -23,13 +23,13 @@ export class UsuarioEntity {
   turmasAluno: TurmaEntity[];
 
   @OneToMany( type => TurmaEntity, turma => turma.professor )
-  turmasProfessor: UsuarioEntity[];
+  turmasProfessor: TurmaEntity[];
 
   @OneToMany( type => TemaEntity, tema => tema.proponente )
-  temasProponente: UsuarioEntity[];
+  temasProponente: TemaEntity[];
 
   @OneToMany( type => TemaEntity, tema => tema.aprovador )
-  temasAprovador: UsuarioEntity[];
+  temasAprovador: TemaEntity[];
 
   @OneToMany( type => SalaEntity, sala => sala.usuario )
   salas: SalaEntity[];

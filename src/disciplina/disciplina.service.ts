@@ -18,6 +18,12 @@ export class DisciplinaService {
     return disciplinas.map(disciplina => disciplina);
   }
 
+  async showOne(id: number) {
+    const disciplina = await this.disciplinaRepository.findOne({where: {id}});
+    // @ts-ignore
+    return disciplina;
+  }
+
   async cadastrar(data: DisciplinaDTO) {
     const { nome } = data;
     let disciplina = await this.disciplinaRepository.findOne({

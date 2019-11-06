@@ -18,7 +18,7 @@ async function bootstrap () {
   options.setDescription( system.description );
   options.setVersion( system.version );
   // options.addBearerAuth();
-  options.setSchemes( 'https', 'http' );
+  options.setSchemes( 'http', 'https' );
 
   const document = SwaggerModule.createDocument( app, options.build() );
   SwaggerModule.setup( '', app, document );

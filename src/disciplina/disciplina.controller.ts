@@ -2,7 +2,8 @@ import {
   Controller,
   Get,
   Post,
-  Body
+  Body,
+  Param
 } from '@nestjs/common';
 
 import { DisciplinaService } from './disciplina.service';
@@ -17,6 +18,11 @@ export class DisciplinaController {
   @Get()
   showAllDisciplinas () {
     return this.disciplinaService.showAll();
+  }
+
+  @Get(':id')
+  showOneDisciplina(@Param() params) {
+    return this.disciplinaService.showOne(params.id);
   }
 
   @Post()

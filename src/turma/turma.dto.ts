@@ -19,4 +19,16 @@ export class TurmaDTO {
     example: '2019',
   })
   ano: string;
+
+  @IsNotEmpty()
+  @ApiModelProperty({
+    example: 1,
+  })
+  professorId: number;
+
+  @IsNotEmpty()
+  @ApiModelProperty({
+    example: 1,
+  })
+  disciplinaId: number;
 }

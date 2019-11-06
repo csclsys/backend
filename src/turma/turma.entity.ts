@@ -46,8 +46,17 @@ export class TurmaEntity {
 
   @Column( {
     type: 'text',
-    unique: true,
   } )
   ano: string;
+
+  @Column( {
+    type: 'integer',
+  } )
+  professorId: number;
+
+  @Column( {
+    type: 'integer',
+  } )
+  disciplinaId: number;
 
 }

@@ -12,7 +12,7 @@ export class CursoService {
   constructor(
     @InjectRepository(CursoEntity)
     private cursoRepository: Repository<CursoEntity>,
-  ) {}
+  ) { }
 
   async showAll() {
     const cursos = await this.cursoRepository.find({});
@@ -35,7 +35,8 @@ export class CursoService {
   }
 
   async importarCursos() {
-    let cursos: any = [];
+    let cursos: string[] = [];
+    let ret: any[] = [];
 
     await Axios.get(
       'https://my-json-server.typicode.com/csclsys/db-repository/cursos',
@@ -43,13 +44,10 @@ export class CursoService {
       cursos = res.data;
     });
 
-    for (let item of cursos) {
-      const temp = await this.cursoRepository.create(item);
-      await this.cursoRepository.save(temp);
+    cursos.map(async (nome: string) => {
+      await this.cadastrar({nome});
+    });
 
-      console.log(temp);
-    }
-
-    return cursos;
+    return ret;
   }
 }
