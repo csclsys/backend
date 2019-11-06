@@ -23,4 +23,9 @@ export class TurmaController {
   cadastrarTurma ( @Body() turmaData: TurmaDTO ) {
     return this.turmaService.cadastrar( turmaData );
   }
+
+  @Post('importarTurmas')
+  importarCursos() {
+    return this.turmaService.importarTurmas();
+  }
 }

@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 
 import { UsuarioEntity } from './usuario.entity';
 import { UsuarioDTO } from './usuario.dto';
+import Axios from 'axios';
 
 @Injectable()
 export class UsuarioService {
@@ -13,14 +14,13 @@ export class UsuarioService {
   ) {}
 
   async showAll() {
-    const usuarios = await this.usuarioRepository.find({
-    });
+    const usuarios = await this.usuarioRepository.find({});
     // @ts-ignore
     return usuarios.map(usuario => usuario);
   }
 
   async showOne(id: number) {
-    const usuario = await this.usuarioRepository.findOne({where: {id}});
+    const usuario = await this.usuarioRepository.findOne({ where: { id } });
     // @ts-ignore
     return usuario;
   }
@@ -33,29 +33,34 @@ export class UsuarioService {
     }
     usuario = await this.usuarioRepository.create(data);
     await this.usuarioRepository.save(usuario);
-        // @ts-ignore
+    // @ts-ignore
     return usuario;
   }
 
-  /* async read(usuarioname: string) {
-    const usuario = await this.usuarioRepository.findOne({
-      where: { usuarioname },
-      relations: ['ideas', 'bookmarks'],
-    });
-    return usuario.toResponseObject(false);
-  }
+  async importarUsuarios() {
+    let usuarios: any[] = [];
+    let ret: any[] = [];
 
-  async login(data: UsuarioDTO) {
-    const { usuarioname, password } = data;
-    const usuario = await this.usuarioRepository.findOne({ where: { usuarioname } });
-    if (!usuario || !(await usuario.comparePassword(password))) {
-      throw new HttpException(
-        'Invalid usuarioname/password',
-        HttpStatus.BAD_REQUEST,
+    await Axios.get(
+      'https://my-json-server.typicode.com/csclsys/db-repository/usuarios',
+    ).then(res => {
+      usuarios = res.data;
+    });
+
+    for (let usuario of usuarios) {
+      const { nome, sobrenome, cpf, matricula, papel } = usuario;
+
+      ret.push(
+        await this.cadastrar({
+          nome,
+          sobrenome,
+          cpf,
+          matricula,
+          papel,
+        }),
       );
     }
-    return usuario.toResponseObject();
-  }
 
-   */
+    return ret;
+  }
 }

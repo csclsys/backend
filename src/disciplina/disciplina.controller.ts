@@ -1,22 +1,16 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Param
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 
 import { DisciplinaService } from './disciplina.service';
 import { DisciplinaDTO } from './disciplina.dto';
 import { ApiUseTags } from '@nestjs/swagger';
 
-@ApiUseTags( 'Disciplina' )
-@Controller( 'disciplinas' )
+@ApiUseTags('Disciplina')
+@Controller('disciplinas')
 export class DisciplinaController {
-  constructor( private disciplinaService: DisciplinaService ) { }
+  constructor(private disciplinaService: DisciplinaService) {}
 
   @Get()
-  showAllDisciplinas () {
+  showAllDisciplinas() {
     return this.disciplinaService.showAll();
   }
 
@@ -26,7 +20,12 @@ export class DisciplinaController {
   }
 
   @Post()
-  cadastrarDisciplina ( @Body() disciplinaData: DisciplinaDTO ) {
-    return this.disciplinaService.cadastrar( disciplinaData );
+  cadastrarDisciplina(@Body() disciplinaData: DisciplinaDTO) {
+    return this.disciplinaService.cadastrar(disciplinaData);
+  }
+
+  @Post('importarDisciplinas')
+  importarCursos() {
+    return this.disciplinaService.importarDisciplinas();
   }
 }

@@ -33,7 +33,7 @@ export class CursoService {
   }
 
   async importarCursos() {
-    let cursos: string[] = [];
+    let cursos: any[] = [];
     let ret: any[] = [];
 
     await Axios.get(
@@ -42,8 +42,8 @@ export class CursoService {
       cursos = res.data;
     });
 
-    for (let nome of cursos) {
-      ret.push(await this.cadastrar({ nome }));
+    for (let curso of cursos) {
+      ret.push(await this.cadastrar({ nome: curso.nome }));
     }
 
     return ret;

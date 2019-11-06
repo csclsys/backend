@@ -1,11 +1,4 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Request,
-  Param,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Request, Param } from '@nestjs/common';
 
 import { UsuarioService } from './usuario.service';
 import { UsuarioDTO } from './usuario.dto';
@@ -14,7 +7,7 @@ import { ApiUseTags } from '@nestjs/swagger';
 @ApiUseTags('Usuário')
 @Controller('usuarios')
 export class UsuarioController {
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(private usuarioService: UsuarioService) {}
 
   @Get()
   showAllUsuarios() {
@@ -29,5 +22,10 @@ export class UsuarioController {
   @Post()
   cadastrarUsuario(@Body() usuarioData: UsuarioDTO) {
     return this.usuarioService.cadastrar(usuarioData);
+  }
+
+  @Post('importarUsuarios')
+  importarCursos() {
+    return this.usuarioService.importarUsuarios();
   }
 }
