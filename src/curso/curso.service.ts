@@ -12,11 +12,10 @@ export class CursoService {
   constructor(
     @InjectRepository(CursoEntity)
     private cursoRepository: Repository<CursoEntity>,
-  ) { }
+  ) {}
 
   async showAll() {
     const cursos = await this.cursoRepository.find({});
-    // @ts-ignore
     return cursos.map(curso => curso);
   }
 
@@ -30,7 +29,6 @@ export class CursoService {
     }
     curso = await this.cursoRepository.create(data);
     await this.cursoRepository.save(curso);
-    // @ts-ignore
     return curso;
   }
 
@@ -44,9 +42,9 @@ export class CursoService {
       cursos = res.data;
     });
 
-    cursos.map(async (nome: string) => {
-      await this.cadastrar({nome});
-    });
+    for (let nome of cursos) {
+      ret.push(await this.cadastrar({ nome }));
+    }
 
     return ret;
   }
