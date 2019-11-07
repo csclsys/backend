@@ -8,6 +8,8 @@ import { TemaModule } from './tema/tema.module';
 import { VideoconferenciaModule } from './videoconferencia/videoconferencia.module';
 import { SalaModule } from './sala/sala.module';
 import { RespostasalaModule } from './respostasala/respostasala.module';
+import { MatriculaAlunoModule } from './matricula-aluno/matricula-aluno.module';
+import { MatriculaMonitorModule } from './matricula-monitor/matricula-monitor.module';
 
 
 @Module( {
@@ -22,6 +24,8 @@ import { RespostasalaModule } from './respostasala/respostasala.module';
     SalaModule,
     RespostasalaModule,
     HttpModule,
+    MatriculaAlunoModule,
+    MatriculaMonitorModule,
   ],
   controllers: [],
   providers: [],

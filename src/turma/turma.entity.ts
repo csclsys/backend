@@ -10,17 +10,17 @@ import {
 } from 'typeorm';
 import { UsuarioEntity } from '../usuario/usuario.entity';
 import { DisciplinaEntity } from 'src/disciplina/disciplina.entity';
+import { MatriculaAlunoEntity } from 'src/matricula-aluno/matricula-aluno.entity';
+import { MatriculaMonitorEntity } from 'src/matricula-monitor/matricula-monitor.entity';
 
 @Entity( 'turma' )
 export class TurmaEntity {
 
-  @ManyToMany( type => UsuarioEntity )
-  @JoinTable( { name: 'turmaUsuarioMonitor' } )
-  monitores: UsuarioEntity[];
+  @OneToMany( type => MatriculaAlunoEntity, matricula => matricula.usuario )
+  matriculasAlunos: MatriculaAlunoEntity[];
 
-  @ManyToMany( type => UsuarioEntity )
-  @JoinTable( { name: 'turmaUsuarioAlunos' } )
-  alunos: UsuarioEntity[];
+  @OneToMany( type => MatriculaMonitorEntity, matricula => matricula.usuario )
+  matriculasMonitor: MatriculaMonitorEntity[];
 
   @ManyToOne( type => UsuarioEntity )
   professor: UsuarioEntity;

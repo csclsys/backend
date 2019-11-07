@@ -15,14 +15,26 @@ export class UsuarioService {
 
   async showAll() {
     const usuarios = await this.usuarioRepository.find({});
-    // @ts-ignore
     return usuarios.map(usuario => usuario);
   }
 
   async showOne(id: number) {
     const usuario = await this.usuarioRepository.findOne({ where: { id } });
-    // @ts-ignore
     return usuario;
+  }
+
+  async buscarPorPapel(papel: string) {
+    const usuarios = await this.usuarioRepository.find({ where: { papel } });
+    return usuarios.map(usuario => usuario);
+  }
+
+  async auth(cpf: string) {
+    const usuario = await this.usuarioRepository.findOne({ where: { cpf } });
+    if(usuario) {
+      return usuario;
+    }
+
+    return {};
   }
 
   async cadastrar(data: UsuarioDTO) {

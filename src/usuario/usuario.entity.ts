@@ -10,17 +10,19 @@ import {
 import { TurmaEntity } from 'src/turma/turma.entity';
 import { TemaEntity } from 'src/tema/tema.entity';
 import { SalaEntity } from 'src/sala/sala.entity';
+import { MatriculaAlunoEntity } from 'src/matricula-aluno/matricula-aluno.entity';
+import { MatriculaMonitorEntity } from 'src/matricula-monitor/matricula-monitor.entity';
 
 @Entity( 'usuario' )
 export class UsuarioEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToMany( type => TurmaEntity )
-  turmasMonitor: TurmaEntity[];
+  @OneToMany( type => MatriculaAlunoEntity, matricula => matricula.usuario )
+  matriculasAlunos: MatriculaAlunoEntity[];
 
-  @ManyToMany( type => TurmaEntity )
-  turmasAluno: TurmaEntity[];
+  @OneToMany( type => MatriculaMonitorEntity, matricula => matricula.usuario )
+  matriculasMonitor: MatriculaMonitorEntity[];
 
   @OneToMany( type => TurmaEntity, turma => turma.professor )
   turmasProfessor: TurmaEntity[];
