@@ -4,25 +4,28 @@ import { Repository } from 'typeorm';
 import { RespostaSalaEntity } from './respostasala.entity';
 import { RespostaSalaDTO } from './respostasala.dto';
 
-
-
 @Injectable()
 export class RespostaSalaService {
-    constructor(
-        @InjectRepository( RespostaSalaEntity )
-        private respostaSalaRepository: Repository<RespostaSalaEntity>,
-    ) { }
+  constructor(
+    @InjectRepository(RespostaSalaEntity)
+    private respostaSalaRepository: Repository<RespostaSalaEntity>,
+  ) {}
 
-    async showAll () {
-        const respostaSalas = await this.respostaSalaRepository.find( {} );
+  async showAll() {
+    const respostaSalas = await this.respostaSalaRepository.find({});
 
-        return respostaSalas.map( respostaSala => respostaSala );
-    }
+    return respostaSalas.map(respostaSala => respostaSala);
+  }
 
-    async cadastrar ( data: RespostaSalaDTO ) {
-        const respostaSala = await this.respostaSalaRepository.create( data );
-        await this.respostaSalaRepository.save( respostaSala );
+  async respostasPorSala(salaId: number) {
+    const respostaSalas = await this.respostaSalaRepository.find({ where: { salaId } });
+    return respostaSalas.map(respostaSala => respostaSala);
+  }
 
-        return respostaSala;
-    }
+  async cadastrarResposta(data: RespostaSalaDTO) {
+    const respostaSala = await this.respostaSalaRepository.create(data);
+    await this.respostaSalaRepository.save(respostaSala);
+
+    return respostaSala;
+  }
 }

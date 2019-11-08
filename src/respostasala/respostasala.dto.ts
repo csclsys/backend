@@ -4,12 +4,6 @@ import { ApiModelProperty } from '@nestjs/swagger';
 export class RespostaSalaDTO {
 
     @ApiModelProperty({
-        example: new Date().toISOString(),
-    })
-    @IsNotEmpty()
-    horarioResposta: Date;
-
-    @ApiModelProperty({
         example: 'É um problema, realmente, difícil!',
     })
     @IsNotEmpty()
@@ -24,7 +18,7 @@ export class RespostaSalaDTO {
     @ApiModelProperty({
         example: 1,
     })
-    comentarioId: number;
+    respostaId?: number;
 
     @ApiModelProperty({
         example: 1,

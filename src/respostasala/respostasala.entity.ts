@@ -14,21 +14,19 @@ export class RespostaSalaEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @OneToMany( type => RespostaSalaEntity, comentario => comentario.comentario )
+    @OneToMany( type => RespostaSalaEntity, comentario => comentario.resposta )
     comentarios: RespostaSalaEntity[];
 
     @ManyToOne( type => RespostaSalaEntity )
-    comentario: RespostaSalaEntity;
+    resposta: RespostaSalaEntity;
 
     @ManyToOne( type => UsuarioEntity )
     usuario: UsuarioEntity;
 
-    @ManyToOne(type => SalaEntity)
+    @ManyToOne(type => SalaEntity )
     sala: SalaEntity;
 
-    @Column( {
-        type: 'timestamp',
-    } )
+    @CreateDateColumn()
     horarioResposta: Date;
 
     @Column( {
@@ -45,7 +43,7 @@ export class RespostaSalaEntity {
         type: 'integer',
         nullable: true,
     } )
-    comentarioId: number;
+    respostaId: number;
 
     @Column( {
         type: 'integer',
