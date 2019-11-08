@@ -7,6 +7,7 @@ import {
     ManyToOne,
 } from 'typeorm';
 import { SalaEntity } from 'src/sala/sala.entity';
+import { UsuarioEntity } from 'src/usuario/usuario.entity';
 
 @Entity( 'respostaSala' )
 export class RespostaSalaEntity {
@@ -18,6 +19,9 @@ export class RespostaSalaEntity {
 
     @ManyToOne( type => RespostaSalaEntity )
     comentario: RespostaSalaEntity;
+
+    @ManyToOne( type => UsuarioEntity )
+    usuario: UsuarioEntity;
 
     @ManyToOne(type => SalaEntity)
     sala: SalaEntity;
@@ -31,4 +35,20 @@ export class RespostaSalaEntity {
         type: 'text',
     } )
     texto: string;
+
+    @Column( {
+        type: 'integer',
+    } )
+    salaId: number;
+
+    @Column( {
+        type: 'integer',
+        nullable: true,
+    } )
+    comentarioId: number;
+
+    @Column( {
+        type: 'integer',
+    } )
+    usuarioId: number;
 }

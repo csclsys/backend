@@ -12,6 +12,7 @@ import { TemaEntity } from 'src/tema/tema.entity';
 import { SalaEntity } from 'src/sala/sala.entity';
 import { MatriculaAlunoEntity } from 'src/matricula-aluno/matricula-aluno.entity';
 import { MatriculaMonitorEntity } from 'src/matricula-monitor/matricula-monitor.entity';
+import { RespostaSalaEntity } from 'src/respostasala/respostasala.entity';
 
 @Entity( 'usuario' )
 export class UsuarioEntity {
@@ -35,6 +36,9 @@ export class UsuarioEntity {
 
   @OneToMany( type => SalaEntity, sala => sala.usuario )
   salas: SalaEntity[];
+
+  @OneToMany( type => RespostaSalaEntity, respostaSala => respostaSala.usuario )
+  respostas: RespostaSalaEntity[];
 
   @CreateDateColumn()
   created: Date;
