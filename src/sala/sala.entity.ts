@@ -34,6 +34,16 @@ export class SalaEntity {
     tipo: string;
 
     @Column( {
+        type: 'integer',
+    } )
+    usuarioId: number;
+
+    @Column( {
+        type: 'integer',
+    } )
+    temaId: number;
+
+    @Column( {
         type: 'timestamp',
     } )
     dataAbertura: Date;

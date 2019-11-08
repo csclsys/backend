@@ -4,10 +4,12 @@ import {
     Column,
     ManyToOne,
     OneToMany,
+    CreateDateColumn,
 } from 'typeorm';
 import { UsuarioEntity } from 'src/usuario/usuario.entity';
 import { VideoConferenciaEntity } from 'src/videoconferencia/videoconferencia.entity';
 import { SalaEntity } from 'src/sala/sala.entity';
+import { DisciplinaEntity } from 'src/disciplina/disciplina.entity';
 
 @Entity('tema')
 export class TemaEntity {
@@ -26,6 +28,9 @@ export class TemaEntity {
     @OneToMany(type => SalaEntity, sala => sala.tema)
     salas: SalaEntity[];
 
+    @ManyToOne(type => DisciplinaEntity)
+    disciplina: DisciplinaEntity;
+
     @Column({
         type: 'text',
     })
@@ -36,9 +41,17 @@ export class TemaEntity {
     })
     situacao: string;
 
+    @CreateDateColumn()
+    created: Date;
+
     @Column({
-        type: 'timestamp',
+        type: 'integer',
     })
-    dataInclusao: Date;
+    disciplinaId: number;
+
+    @Column({
+        type: 'integer',
+    })
+    proponenteId: number;
 
 }

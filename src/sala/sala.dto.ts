@@ -16,6 +16,18 @@ export class SalaDTO {
     tipo: string;
 
     @ApiModelProperty({
+        example: 1,
+    })
+    @IsNotEmpty()
+    temaId: number;
+
+    @ApiModelProperty({
+        example: 1,
+    })
+    @IsNotEmpty()
+    usuarioId: number;
+
+    @ApiModelProperty({
         example: new Date().toISOString(),
     })
     @IsNotEmpty()

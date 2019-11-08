@@ -10,7 +10,7 @@ import { MatriculaAlunoDTO } from './matricula-aluno.dto';
 import { ApiUseTags } from '@nestjs/swagger';
 
 @ApiUseTags('MatriculaAluno')
-@Controller('matricula-alunos')
+@Controller('matriculaAlunos')
 export class MatriculaAlunoController {
     constructor(private matriculaAlunoService: MatriculaAlunoService) { }
 

@@ -15,8 +15,14 @@ export class TemaDTO {
     situacao: string;
 
     @ApiModelProperty({
-        example: new Date().toISOString(),
+        example: 1,
     })
     @IsNotEmpty()
-    dataInclusao: Date;
+    disciplinaId: number;
+
+    @ApiModelProperty({
+        example: 1,
+    })
+    @IsNotEmpty()
+    proponenteId: number;
 }
