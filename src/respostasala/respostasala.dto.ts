@@ -4,6 +4,12 @@ import { ApiModelProperty } from '@nestjs/swagger';
 export class RespostaSalaDTO {
 
     @ApiModelProperty({
+        example: 'midia ou texto',
+    })
+    @IsNotEmpty()
+    tipo: string;
+
+    @ApiModelProperty({
         example: 'É um problema, realmente, difícil!',
     })
     @IsNotEmpty()

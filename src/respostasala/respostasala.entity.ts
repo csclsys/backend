@@ -32,6 +32,11 @@ export class RespostaSalaEntity {
     @Column( {
         type: 'text',
     } )
+    tipo: string;
+
+    @Column( {
+        type: 'text',
+    } )
     texto: string;
 
     @Column( {

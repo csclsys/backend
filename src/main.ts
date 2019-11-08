@@ -4,6 +4,7 @@ import { AppModule } from './app.module';
 import { Logger } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import * as system from '../package.json';
+import * as bodyParser from 'body-parser';
 
 const port = process.env.PORT || 8080;
 
@@ -12,9 +13,10 @@ async function bootstrap() {
   app.enableCors({
     origin: '*',
   });
+  app.use(bodyParser.json({limit: '50mb'}));
+  app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
    // origin: ['*', 'http://localhost:4200', 'http://127.0.0.1:4200', 'http://192.168.0.58:4200', 'http://192.168.0.53:4200', 'http://192.168.0.53'],
-
 
   let options = new DocumentBuilder();
   options.setTitle(system.name);
